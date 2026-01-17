@@ -1,0 +1,43 @@
+# Compute Budget Definitions for CurationGym
+# Multi-fidelity promotion schedule: small → medium → final
+
+budgets:
+  small:
+    description: "Quick screening of candidate policies"
+    model_params: 50_000_000  # 50M
+    tokens_processed: 1_000_000_000  # 1B
+    training_steps: 10_000
+    batch_size_tokens: 100_000
+    wall_clock_hours: 0.5
+    gpu_hours: 1.0
+
+  medium:
+    description: "Promising candidates get more compute"
+    model_params: 150_000_000  # 150M
+    tokens_processed: 5_000_000_000  # 5B
+    training_steps: 25_000
+    batch_size_tokens: 200_000
+    wall_clock_hours: 2.0
+    gpu_hours: 4.0
+
+  final:
+    description: "Top candidates for final evaluation"
+    model_params: 400_000_000  # 400M
+    tokens_processed: 10_000_000_000  # 10B
+    training_steps: 50_000
+    batch_size_tokens: 500_000
+    wall_clock_hours: 4.0
+    gpu_hours: 8.0
+
+promotion:
+  small_to_medium:
+    top_k: 5
+    min_score: 0.0
+  medium_to_final:
+    top_k: 2
+    min_score: 0.0
+
+constraints:
+  max_total_gpu_hours: 100
+  max_concurrent_runs: 4
+  early_stop_patience: 3
