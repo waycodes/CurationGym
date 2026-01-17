@@ -1,0 +1,41 @@
+# Canonical Text Evaluation Suite for CurationGym
+# Small, stable subset for proxy model evaluation
+
+version: "1.0"
+description: "MVP eval suite - stable tasks with good signal at small scale"
+
+tasks:
+  - name: hellaswag
+    weight: 1.0
+    metric: acc_norm
+    few_shot: 10
+
+  - name: arc_easy
+    weight: 1.0
+    metric: acc_norm
+    few_shot: 25
+
+  - name: piqa
+    weight: 1.0
+    metric: acc_norm
+    few_shot: 5
+
+  - name: winogrande
+    weight: 1.0
+    metric: acc
+    few_shot: 5
+
+  - name: mmlu
+    subset: [abstract_algebra, anatomy, astronomy, college_biology, college_chemistry]
+    weight: 1.0
+    metric: acc
+    few_shot: 5
+
+aggregation:
+  method: weighted_mean  # Options: weighted_mean, geometric_mean, centered_average
+  normalize: false
+
+eval_harness:
+  framework: lm-evaluation-harness
+  version_pin: "0.4.0"
+  batch_size: auto
