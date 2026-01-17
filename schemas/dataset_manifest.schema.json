@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DatasetManifest",
+  "description": "Manifest for a curated dataset artifact",
+  "type": "object",
+  "required": ["dataset_id", "format", "shards"],
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "description": "Unique identifier for the dataset"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of creation"
+    },
+    "input_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "path": {"type": "string"},
+          "checksum": {"type": "string"}
+        }
+      },
+      "description": "Input data sources"
+    },
+    "policy_config": {
+      "type": "object",
+      "description": "Full policy configuration used"
+    },
+    "policy_config_hash": {
+      "type": "string",
+      "description": "SHA256 hash of canonical policy config"
+    },
+    "code_commit": {
+      "type": "string",
+      "description": "Git commit hash of code version"
+    },
+    "code_dirty": {
+      "type": "boolean",
+      "description": "Whether working directory had uncommitted changes"
+    },
+    "random_seed": {
+      "type": "integer",
+      "description": "Random seed for reproducibility"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["jsonl.zst", "parquet", "webdataset"],
+      "description": "Storage format of data shards"
+    },
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "checksum", "doc_count"],
+        "properties": {
+          "path": {"type": "string"},
+          "checksum": {"type": "string"},
+          "doc_count": {"type": "integer"}
+        }
+      },
+      "description": "List of data shards"
+    },
+    "stats": {
+      "type": "object",
+      "description": "Dataset statistics",
+      "properties": {
+        "total_docs": {"type": "integer"},
+        "total_tokens": {"type": "integer"},
+        "docs_filtered": {"type": "integer"},
+        "docs_deduped": {"type": "integer"},
+        "docs_decontaminated": {"type": "integer"}
+      }
+    }
+  }
+}
