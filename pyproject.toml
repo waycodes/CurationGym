@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "curationgym"
+version = "0.1.0"
+description = "Compute-budget-aware data curation policy search"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "CurationGym Authors" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "click>=8.0",
+    "datatrove>=0.2.0",
+    "datasets>=2.14",
+    "transformers>=4.35",
+    "torch>=2.0",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+ray = ["ray>=2.9"]
+slurm = ["submitit>=1.5"]
+vision = ["open_clip_torch>=2.24", "timm>=0.9"]
+eval = ["lm-eval>=0.4.0"]
+dev = ["pytest>=7.0", "ruff>=0.1", "mypy>=1.0", "pre-commit>=3.0"]
+all = ["curationgym[ray,slurm,vision,eval,dev]"]
+
+[project.scripts]
+curationgym = "curationgym.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/curationgym"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/curationgym", "configs", "docs"]
