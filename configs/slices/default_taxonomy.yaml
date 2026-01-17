@@ -1,0 +1,31 @@
+# Default Slice Taxonomy for CurationGym
+# Defines how documents are categorized for attribution
+
+version: "1.0"
+
+slices:
+  # Provenance slices
+  - name: dump
+    description: "Common Crawl dump identifier"
+    enabled: true
+
+  - name: domain
+    description: "URL domain and domain type (edu, gov, etc.)"
+    enabled: true
+
+  # Content slices
+  - name: language
+    description: "Document language"
+    enabled: true
+
+  - name: token_length_bin
+    description: "Token count bins: tiny (<128), small (<512), medium (<2048), large"
+    enabled: true
+
+  # Quality slices
+  - name: quality_bin
+    description: "Quality score bins: low, medium, high"
+    enabled: true
+
+# Custom slice definitions can be added here
+custom_slices: []
