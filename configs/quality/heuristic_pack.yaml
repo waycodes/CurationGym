@@ -1,0 +1,39 @@
+# Heuristic Quality Filter Configuration
+# Based on Gopher, C4, and FineWeb approaches
+
+# Gopher-style repetition filters
+max_word_rep_ratio: 0.2
+max_line_rep_ratio: 0.3
+max_paragraph_rep_ratio: 0.3
+max_char_rep_ratio: 0.2
+
+# Length filters
+min_words: 50
+max_words: 100000
+min_avg_word_length: 3.0
+max_avg_word_length: 10.0
+
+# C4-style filters
+min_sentence_end_ratio: 0.1
+max_ellipsis_ratio: 0.1
+max_bullet_ratio: 0.9
+
+# FineWeb custom filters
+max_curly_brace_ratio: 0.05
+max_digit_ratio: 0.3
+min_alpha_ratio: 0.6
+
+# Enabled rules (comment out to disable)
+enabled_rules:
+  - word_rep
+  - line_rep
+  - char_rep
+  - min_words
+  - max_words
+  - avg_word_length
+  - sentence_end
+  - ellipsis
+  - bullet
+  - curly_brace
+  - digit_ratio
+  - alpha_ratio
