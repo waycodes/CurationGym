@@ -1,0 +1,4 @@
+# Adult content domains
+# Add domains one per line, comments start with #
+# Example:
+# example-adult-site.com
