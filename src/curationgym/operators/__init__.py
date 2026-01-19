@@ -5,6 +5,7 @@ from curationgym.operators.url_filter import URLFilter, create_url_filter
 from curationgym.operators.lang_filter import LanguageFilter, detect_language
 from curationgym.operators.token_count import TokenCounter, count_tokens
 from curationgym.operators.quality import HeuristicQualityFilter, QualityConfig
+from curationgym.operators.pii_mask import PIIMasker, PIIMaskStats, mask_pii
 
 __all__ = [
     "TextExtractor", "extract_text",
@@ -12,4 +13,5 @@ __all__ = [
     "LanguageFilter", "detect_language",
     "TokenCounter", "count_tokens",
     "HeuristicQualityFilter", "QualityConfig",
+    "PIIMasker", "PIIMaskStats", "mask_pii",
 ]
