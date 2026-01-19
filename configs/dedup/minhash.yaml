@@ -1,0 +1,14 @@
+# MinHash Deduplication Configuration
+# FineWeb-style defaults: 5-gram, 14 bands x 8 rows = 112 hash functions
+
+num_bands: 14
+rows_per_band: 8
+ngram_size: 5
+seed: 42
+
+# Scope: "global" or "per_dump"
+scope: per_dump
+dump_field: dump
+
+# Keep rule: first, longest, most_tokens, highest_quality, lowest_toxicity, most_recent
+keep_rule: first
