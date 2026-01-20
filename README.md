@@ -102,6 +102,12 @@ See `configs/` for example configurations:
 pytest tests/
 ```
 
-## License
+## License and Usage
 
-MIT
+This software is provided under a **proprietary portfolio/research-only license**.
+
+- **No commercial or professional use** — including internal business use, consulting, or product development
+- **Research use requires citation** — see [CITATION.cff](CITATION.cff) or use GitHub's "Cite this repository" feature
+- **No external contributions accepted** — this is a personal portfolio project
+
+See [LICENSE](LICENSE) for full terms.

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software in research, please cite it as below."
+title: "CurationGym"
+authors:
+  - family-names: "Bharadwaj"
+    given-names: "Varun"
+repository-code: "https://github.com/waycodes/CurationGym"
+license: "Proprietary"
+version: "0.1.0"
+date-released: "2026-01-20"
