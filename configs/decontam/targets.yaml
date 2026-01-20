@@ -1,0 +1,58 @@
+# Decontamination Targets Configuration
+# Lists evaluation datasets to protect from contamination
+
+version: "1.0"
+
+# Evaluation datasets to decontaminate against
+targets:
+  # Core text benchmarks
+  - name: hellaswag
+    source: huggingface
+    dataset: Rowan/hellaswag
+    split: validation
+    text_fields: [ctx, endings]
+
+  - name: arc_easy
+    source: huggingface
+    dataset: allenai/ai2_arc
+    config: ARC-Easy
+    split: test
+    text_fields: [question, choices]
+
+  - name: arc_challenge
+    source: huggingface
+    dataset: allenai/ai2_arc
+    config: ARC-Challenge
+    split: test
+    text_fields: [question, choices]
+
+  - name: piqa
+    source: huggingface
+    dataset: piqa
+    split: validation
+    text_fields: [goal, sol1, sol2]
+
+  - name: winogrande
+    source: huggingface
+    dataset: winogrande
+    config: winogrande_xl
+    split: validation
+    text_fields: [sentence, option1, option2]
+
+  - name: mmlu
+    source: huggingface
+    dataset: cais/mmlu
+    config: all
+    split: test
+    text_fields: [question, choices]
+
+# Contamination detection settings
+detection:
+  # Primary method: n-gram overlap (GPT-3 used 13-gram)
+  method: ngram_overlap
+  ngram_size: 13
+  overlap_threshold: 0.8  # Fraction of eval n-grams found in doc
+
+  # Alternative: exact substring match
+  # method: exact_match
+  # min_match_length: 50  # GPT-4 used ~50 chars
