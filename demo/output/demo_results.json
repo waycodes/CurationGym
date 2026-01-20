@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "baseline": {
+      "input": 1150,
+      "after_filter": 1079,
+      "after_dedup": 1079,
+      "final": 500
+    },
+    "quality_focused": {
+      "input": 1150,
+      "after_filter": 281,
+      "after_dedup": 181,
+      "final": 180
+    },
+    "diversity_focused": {
+      "input": 1150,
+      "after_filter": 758,
+      "after_dedup": 409,
+      "final": 308
+    }
+  },
+  "results": [
+    {
+      "policy": "baseline",
+      "n_docs": 500,
+      "composition": {
+        "domains": {
+          "news": 0.286,
+          "code": 0.252,
+          "social": 0.198,
+          "wiki": 0.264
+        },
+        "quality": {
+          "medium": 0.414,
+          "low": 0.248,
+          "high": 0.338
+        }
+      },
+      "eval": {
+        "hellaswag": 0.3296,
+        "arc_easy": 0.3719,
+        "winogrande": 0.3235,
+        "average": 0.3417
+      }
+    },
+    {
+      "policy": "quality_focused",
+      "n_docs": 180,
+      "composition": {
+        "domains": {
+          "wiki": 0.467,
+          "code": 0.256,
+          "news": 0.278
+        },
+        "quality": {
+          "high": 1.0
+        }
+      },
+      "eval": {
+        "hellaswag": 0.4433,
+        "arc_easy": 0.4801,
+        "winogrande": 0.4169,
+        "average": 0.4468
+      }
+    },
+    {
+      "policy": "diversity_focused",
+      "n_docs": 308,
+      "composition": {
+        "domains": {
+          "wiki": 0.406,
+          "code": 0.247,
+          "news": 0.198,
+          "social": 0.149
+        },
+        "quality": {
+          "medium": 0.354,
+          "high": 0.536,
+          "low": 0.11
+        }
+      },
+      "eval": {
+        "hellaswag": 0.3833,
+        "arc_easy": 0.3965,
+        "winogrande": 0.3461,
+        "average": 0.3753
+      }
+    }
+  ],
+  "attributions": {
+    "hellaswag": {
+      "wiki": 0.9668,
+      "news": -0.0503,
+      "code": 0.472,
+      "social": -0.9685
+    },
+    "arc_easy": {
+      "wiki": 0.8621,
+      "news": 0.2209,
+      "code": 0.6922,
+      "social": -0.9998
+    },
+    "winogrande": {
+      "wiki": 0.8698,
+      "news": 0.2058,
+      "code": 0.681,
+      "social": -1.0
+    }
+  }
+}
