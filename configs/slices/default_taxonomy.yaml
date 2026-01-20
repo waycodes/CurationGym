@@ -6,26 +6,57 @@ version: "1.0"
 slices:
   # Provenance slices
   - name: dump
-    description: "Common Crawl dump identifier"
+    description: "Common Crawl dump identifier (e.g., CC-MAIN-2024-10)"
     enabled: true
+    type: categorical
 
   - name: domain
-    description: "URL domain and domain type (edu, gov, etc.)"
+    description: "URL domain and domain type (edu, gov, com, etc.)"
     enabled: true
+    type: categorical
 
-  # Content slices
+  - name: domain_type
+    description: "Domain category (edu, gov, org, com, other)"
+    enabled: true
+    type: categorical
+
+  # Language slices
   - name: language
-    description: "Document language"
+    description: "Document language code"
     enabled: true
+    type: categorical
 
-  - name: token_length_bin
-    description: "Token count bins: tiny (<128), small (<512), medium (<2048), large"
+  - name: language_score_bin
+    description: "Language detection confidence bins"
     enabled: true
+    type: binned
+    bins: [0.0, 0.7, 0.85, 0.95, 1.0]
+    labels: [low, medium, high, very_high]
+
+  # Size slices
+  - name: token_length_bin
+    description: "Token count bins"
+    enabled: true
+    type: binned
+    bins: [0, 128, 512, 2048, 8192, 1000000]
+    labels: [tiny, small, medium, large, huge]
 
   # Quality slices
   - name: quality_bin
-    description: "Quality score bins: low, medium, high"
+    description: "Aggregate quality score bins"
     enabled: true
+    type: binned
+    bins: [0.0, 0.3, 0.6, 0.8, 1.0]
+    labels: [low, medium, high, very_high]
+
+  # Safety slices (if toxicity scores available)
+  - name: toxicity_bin
+    description: "Toxicity score bins (lower is better)"
+    enabled: false
+    type: binned
+    bins: [0.0, 0.1, 0.3, 0.5, 1.0]
+    labels: [safe, low_risk, medium_risk, high_risk]
 
 # Custom slice definitions can be added here
 custom_slices: []
+
